@@ -3,15 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		228D4FABF3C34AF29F4C6DA2 /* Pods_UberCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B862B7C1F638E25B2E140 /* Pods_UberCook.framework */; };
+		B778A56C2509F55C009E4A01 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = B778A56B2509F55C009E4A01 /* Login.swift */; };
+		B778A56E2509F892009E4A01 /* StateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B778A56D2509F892009E4A01 /* StateMessage.swift */; };
+		B778A5702509F89A009E4A01 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B778A56F2509F89A009E4A01 /* ChatMessage.swift */; };
 		E529F70225037E610079A593 /* Caches.swift in Sources */ = {isa = PBXBuildFile; fileRef = E529F70125037E610079A593 /* Caches.swift */; };
 		E55F195724FD78E0005C5DBC /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F195624FD78E0005C5DBC /* RecipeDetailViewController.swift */; };
 		E589F8E225094E4D00169A6D /* User_name.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589F8E125094E4D00169A6D /* User_name.swift */; };
 		E589F8E42509F31100169A6D /* LoginObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589F8E32509F31100169A6D /* LoginObj.swift */; };
-		E589F8E62509F34400169A6D /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589F8E52509F34400169A6D /* Login.swift */; };
 		E5925C2B24FF9708002D5C4D /* BlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5925C2A24FF9708002D5C4D /* BlogViewController.swift */; };
 		E5925C2D24FF9E5D002D5C4D /* BlogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5925C2C24FF9E5D002D5C4D /* BlogCollectionViewCell.swift */; };
 		E5925C2F24FFA0B9002D5C4D /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5925C2E24FFA0B9002D5C4D /* Blog.swift */; };
@@ -32,11 +35,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A179A3B26CE5E7A8DFCE1F0 /* Pods-UberCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberCook.release.xcconfig"; path = "Target Support Files/Pods-UberCook/Pods-UberCook.release.xcconfig"; sourceTree = "<group>"; };
+		B45D85793F5E1DD143A49539 /* Pods-UberCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberCook.debug.xcconfig"; path = "Target Support Files/Pods-UberCook/Pods-UberCook.debug.xcconfig"; sourceTree = "<group>"; };
+		B778A56B2509F55C009E4A01 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = ../../Desktop/Login.swift; sourceTree = "<group>"; };
+		B778A56D2509F892009E4A01 /* StateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMessage.swift; path = "../../../Downloads/WSChatBasic 2/WSChatBasic_iOS/WSChatBasic_iOS/TwoChat/StateMessage.swift"; sourceTree = "<group>"; };
+		B778A56F2509F89A009E4A01 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatMessage.swift; path = "../../../Downloads/WSChatBasic 2/WSChatBasic_iOS/WSChatBasic_iOS/TwoChat/ChatMessage.swift"; sourceTree = "<group>"; };
+		C13B862B7C1F638E25B2E140 /* Pods_UberCook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UberCook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E529F70125037E610079A593 /* Caches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caches.swift; sourceTree = "<group>"; };
 		E55F195624FD78E0005C5DBC /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		E589F8E125094E4D00169A6D /* User_name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_name.swift; sourceTree = "<group>"; };
 		E589F8E32509F31100169A6D /* LoginObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginObj.swift; sourceTree = "<group>"; };
-		E589F8E52509F34400169A6D /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = ../../../../Downloads/Login.swift; sourceTree = "<group>"; };
 		E5925C2A24FF9708002D5C4D /* BlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogViewController.swift; sourceTree = "<group>"; };
 		E5925C2C24FF9E5D002D5C4D /* BlogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5925C2E24FFA0B9002D5C4D /* Blog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
@@ -63,12 +71,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				228D4FABF3C34AF29F4C6DA2 /* Pods_UberCook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63D0FEB4905710840B7A6368 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C13B862B7C1F638E25B2E140 /* Pods_UberCook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E292FC1E03B7AAF3C1BEFD5D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B45D85793F5E1DD143A49539 /* Pods-UberCook.debug.xcconfig */,
+				0A179A3B26CE5E7A8DFCE1F0 /* Pods-UberCook.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E529F7562508F7190079A593 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				E589F8E32509F31100169A6D /* LoginObj.swift */,
+				B778A56D2509F892009E4A01 /* StateMessage.swift */,
 				E5925C2E24FFA0B9002D5C4D /* Blog.swift */,
+				B778A56F2509F89A009E4A01 /* ChatMessage.swift */,
 				E5925C3625001E1E002D5C4D /* RecipeList.swift */,
 				E589F8E125094E4D00169A6D /* User_name.swift */,
 				E592950724FADED000C8F9A2 /* ChefLeader.swift */,
@@ -114,6 +142,8 @@
 			children = (
 				E59294EA24FA8E7B00C8F9A2 /* UberCook */,
 				E59294E924FA8E7B00C8F9A2 /* Products */,
+				E292FC1E03B7AAF3C1BEFD5D /* Pods */,
+				63D0FEB4905710840B7A6368 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,10 +165,10 @@
 				E59294EB24FA8E7B00C8F9A2 /* AppDelegate.swift */,
 				E59294ED24FA8E7B00C8F9A2 /* SceneDelegate.swift */,
 				E5925C2A24FF9708002D5C4D /* BlogViewController.swift */,
+				B778A56B2509F55C009E4A01 /* Login.swift */,
 				E592950524FABD7700C8F9A2 /* Home.swift */,
 				E5925C382500292A002D5C4D /* RecipesTVCViewController.swift */,
 				E55F195624FD78E0005C5DBC /* RecipeDetailViewController.swift */,
-				E589F8E52509F34400169A6D /* Login.swift */,
 				E59294F124FA8E7B00C8F9A2 /* Main.storyboard */,
 				E59294F424FA8E7E00C8F9A2 /* Assets.xcassets */,
 				E59294F624FA8E7E00C8F9A2 /* LaunchScreen.storyboard */,
@@ -154,9 +184,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E59294FC24FA8E7E00C8F9A2 /* Build configuration list for PBXNativeTarget "UberCook" */;
 			buildPhases = (
+				16B3D018DECAFC4567C3BED2 /* [CP] Check Pods Manifest.lock */,
 				E59294E424FA8E7B00C8F9A2 /* Sources */,
 				E59294E524FA8E7B00C8F9A2 /* Frameworks */,
 				E59294E624FA8E7B00C8F9A2 /* Resources */,
+				C203826A5044B67317D85655 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -212,11 +244,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		16B3D018DECAFC4567C3BED2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UberCook-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C203826A5044B67317D85655 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UberCook/Pods-UberCook-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UberCook/Pods-UberCook-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UberCook/Pods-UberCook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E59294E424FA8E7B00C8F9A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B778A5702509F89A009E4A01 /* ChatMessage.swift in Sources */,
 				E5925C392500292A002D5C4D /* RecipesTVCViewController.swift in Sources */,
 				E592950024FAA37700C8F9A2 /* Common.swift in Sources */,
 				E589F8E225094E4D00169A6D /* User_name.swift in Sources */,
@@ -224,13 +299,14 @@
 				E5925C3124FFF2DE002D5C4D /* BlogHeardReusableView.swift in Sources */,
 				E5925C2D24FF9E5D002D5C4D /* BlogCollectionViewCell.swift in Sources */,
 				E529F70225037E610079A593 /* Caches.swift in Sources */,
+				B778A56E2509F892009E4A01 /* StateMessage.swift in Sources */,
 				E5925C2B24FF9708002D5C4D /* BlogViewController.swift in Sources */,
 				E59294EC24FA8E7B00C8F9A2 /* AppDelegate.swift in Sources */,
 				E592950624FABD7700C8F9A2 /* Home.swift in Sources */,
-				E589F8E62509F34400169A6D /* Login.swift in Sources */,
 				E592950824FADED000C8F9A2 /* ChefLeader.swift in Sources */,
 				E5925C2F24FFA0B9002D5C4D /* Blog.swift in Sources */,
 				E592950E24FC2C9700C8F9A2 /* Recipe.swift in Sources */,
+				B778A56C2509F55C009E4A01 /* Login.swift in Sources */,
 				E5925C3725001E1E002D5C4D /* RecipeList.swift in Sources */,
 				E59294EE24FA8E7B00C8F9A2 /* SceneDelegate.swift in Sources */,
 				E589F8E42509F31100169A6D /* LoginObj.swift in Sources */,
@@ -379,6 +455,7 @@
 		};
 		E59294FD24FA8E7E00C8F9A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B45D85793F5E1DD143A49539 /* Pods-UberCook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -398,6 +475,7 @@
 		};
 		E59294FE24FA8E7E00C8F9A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A179A3B26CE5E7A8DFCE1F0 /* Pods-UberCook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
