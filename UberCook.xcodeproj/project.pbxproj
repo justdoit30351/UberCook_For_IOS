@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		228D4FABF3C34AF29F4C6DA2 /* Pods_UberCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B862B7C1F638E25B2E140 /* Pods_UberCook.framework */; };
-		B778A56C2509F55C009E4A01 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = B778A56B2509F55C009E4A01 /* Login.swift */; };
 		B778A56E2509F892009E4A01 /* StateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B778A56D2509F892009E4A01 /* StateMessage.swift */; };
 		B778A5702509F89A009E4A01 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B778A56F2509F89A009E4A01 /* ChatMessage.swift */; };
 		E529F70225037E610079A593 /* Caches.swift in Sources */ = {isa = PBXBuildFile; fileRef = E529F70125037E610079A593 /* Caches.swift */; };
@@ -32,12 +31,12 @@
 		E592950824FADED000C8F9A2 /* ChefLeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592950724FADED000C8F9A2 /* ChefLeader.swift */; };
 		E592950C24FBA1B500C8F9A2 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592950B24FBA1B500C8F9A2 /* HomeCollectionViewCell.swift */; };
 		E592950E24FC2C9700C8F9A2 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592950D24FC2C9600C8F9A2 /* Recipe.swift */; };
+		E5AF25C2250A01DA00FBAD9F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AF25C1250A01DA00FBAD9F /* Login.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A179A3B26CE5E7A8DFCE1F0 /* Pods-UberCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberCook.release.xcconfig"; path = "Target Support Files/Pods-UberCook/Pods-UberCook.release.xcconfig"; sourceTree = "<group>"; };
 		B45D85793F5E1DD143A49539 /* Pods-UberCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberCook.debug.xcconfig"; path = "Target Support Files/Pods-UberCook/Pods-UberCook.debug.xcconfig"; sourceTree = "<group>"; };
-		B778A56B2509F55C009E4A01 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = ../../Desktop/Login.swift; sourceTree = "<group>"; };
 		B778A56D2509F892009E4A01 /* StateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMessage.swift; path = "../../../Downloads/WSChatBasic 2/WSChatBasic_iOS/WSChatBasic_iOS/TwoChat/StateMessage.swift"; sourceTree = "<group>"; };
 		B778A56F2509F89A009E4A01 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatMessage.swift; path = "../../../Downloads/WSChatBasic 2/WSChatBasic_iOS/WSChatBasic_iOS/TwoChat/ChatMessage.swift"; sourceTree = "<group>"; };
 		C13B862B7C1F638E25B2E140 /* Pods_UberCook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UberCook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +63,7 @@
 		E592950724FADED000C8F9A2 /* ChefLeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefLeader.swift; sourceTree = "<group>"; };
 		E592950B24FBA1B500C8F9A2 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		E592950D24FC2C9600C8F9A2 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		E5AF25C1250A01DA00FBAD9F /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +165,8 @@
 				E59294EB24FA8E7B00C8F9A2 /* AppDelegate.swift */,
 				E59294ED24FA8E7B00C8F9A2 /* SceneDelegate.swift */,
 				E5925C2A24FF9708002D5C4D /* BlogViewController.swift */,
-				B778A56B2509F55C009E4A01 /* Login.swift */,
 				E592950524FABD7700C8F9A2 /* Home.swift */,
+				E5AF25C1250A01DA00FBAD9F /* Login.swift */,
 				E5925C382500292A002D5C4D /* RecipesTVCViewController.swift */,
 				E55F195624FD78E0005C5DBC /* RecipeDetailViewController.swift */,
 				E59294F124FA8E7B00C8F9A2 /* Main.storyboard */,
@@ -291,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5AF25C2250A01DA00FBAD9F /* Login.swift in Sources */,
 				B778A5702509F89A009E4A01 /* ChatMessage.swift in Sources */,
 				E5925C392500292A002D5C4D /* RecipesTVCViewController.swift in Sources */,
 				E592950024FAA37700C8F9A2 /* Common.swift in Sources */,
@@ -306,7 +307,6 @@
 				E592950824FADED000C8F9A2 /* ChefLeader.swift in Sources */,
 				E5925C2F24FFA0B9002D5C4D /* Blog.swift in Sources */,
 				E592950E24FC2C9700C8F9A2 /* Recipe.swift in Sources */,
-				B778A56C2509F55C009E4A01 /* Login.swift in Sources */,
 				E5925C3725001E1E002D5C4D /* RecipeList.swift in Sources */,
 				E59294EE24FA8E7B00C8F9A2 /* SceneDelegate.swift in Sources */,
 				E589F8E42509F31100169A6D /* LoginObj.swift in Sources */,
