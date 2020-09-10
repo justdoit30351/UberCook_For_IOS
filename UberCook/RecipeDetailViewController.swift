@@ -113,30 +113,27 @@ class RecipeDetailViewController: UIViewController {
     }
     
     func showChefName(){
-        let dataUrl = fileInCaches(fileName: recipe?.chef_no ?? "")
-        if fileManager.fileExists(atPath: dataUrl.path) {
-            if let name = NSDictionary(contentsOf: dataUrl) as? [String: String] {
-                if let user_name = name["name"] {
-                    chefNameLabel.text = user_name
+//        let dataUrl = fileInCaches(fileName: recipe?.chef_no ?? "")
+//        if fileManager.fileExists(atPath: dataUrl.path) {
+//            if let name = NSDictionary(contentsOf: dataUrl) as? [String: String] {
+//                if let user_name = name["name"] {
+//                    chefNameLabel.text = user_name
+//                }
+//            }
+        
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getUserNameforRecipeDetail"
+        requestParam["chef_no"] = recipe?.chef_no
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    if let result = try? JSONDecoder().decode([User_name].self, from: data!){
+                        DispatchQueue.main.async {
+                            self.chefNameLabel.text = "\(String(decoding: data!, as: UTF8.self))"
+                        }
+                    }
                 }
             }
         }
-//        var requestParam = [String: Any]()
-//        requestParam["action"] = "getUserNameforRecipeDetail"
-//        requestParam["chef_no"] = recipe?.chef_no
-//        executeTask(url_server!, requestParam) { (data, response, error) in
-//            if error == nil {
-//                if data != nil {
-////                    print("input: \(String(data: data!, encoding: .utf8)!)")
-//                    if let result = try? JSONDecoder().decode([User_name].self, from: data!){
-//                        print(result)
-//                        DispatchQueue.main.async {
-//                        }
-//                    }
-//                }
-//            }
-//        }
-    }
-    
-    
 }

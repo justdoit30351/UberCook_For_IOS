@@ -649,9 +649,9 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TC9-TL-4x0">
-                                                <rect key="frame" x="70" y="25" width="50" height="25"/>
+                                                <rect key="frame" x="70" y="25" width="100" height="25"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="Gvs-DT-LyC"/>
+                                                    <constraint firstAttribute="width" constant="100" id="Gvs-DT-LyC"/>
                                                     <constraint firstAttribute="height" constant="25" id="WD7-kR-3CG"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
