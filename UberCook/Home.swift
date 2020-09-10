@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import Starscream
 
 class Home: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -14,24 +15,77 @@ class Home: UIViewController, UICollectionViewDelegate, UICollectionViewDataSour
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionView2: UICollectionView!
-    
+    let tag = "HomeTVC"
+    let userDefault = UserDefaults()
     let url_server = URL(string: common_url + "UberCook_Servlet")
+    var socket: WebSocket!
+    let socket_server = "ws://127.0.0.1:8080/UberCook_Server/TwoChatServer/"
     let fileManager = FileManager()
     var chefLeaderList = [ChefLeader]()
     var reciepLeaderList = [Recipe]()
     var fullScreenSize :CGSize!
+    var user_no = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        user_no = userDefault.value(forKey: "user_no") as! String
         fullScreenSize = UIScreen.main.bounds.size
         collectionView.backgroundColor = UIColor.white
         collectionView2.backgroundColor = UIColor.white
+        socket = WebSocket(url: URL(string: socket_server + user_no)!)
+        addSocketCallBacks()
+        socket.connect()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         showAllChef()
         showAllRecipe()
+    }
+    
+    
+    // 也可使用closure偵測WebSocket狀態
+    func addSocketCallBacks() {
+        socket.onConnect = {
+            print("websocket is connected")
+        }
+
+        socket.onDisconnect = { (error: Error?) in
+            print("websocket is disconnected: \(error?.localizedDescription ?? "")")
+        }
+        
+        socket.onText = { (text: String) in
+            if let stateMessage = try? JSONDecoder().decode(StateMessage.self, from: text.data(using: .utf8)!) {
+                let type = stateMessage.type
+                let friend = stateMessage.user
+                switch type {
+                // 有user連線
+                case "open":
+                    // 上線的是好友而非自己就顯示該好友user name
+                    if friend != self.user_no {
+                        showToast(view: self.view, message: "\(friend) is online")
+                    }
+                // 有user斷線
+                case "close":
+                    // 斷線的是好友而非自己就顯示該好友user name
+                    if friend != self.user_no {
+                        showToast(view: self.view, message: "\(friend) is offline")
+                    }
+                default:
+                    break
+                }
+                // 取得server上的所有user，但移除自己，否則會看到自己在聊天清單上
+//                stateMessage.users.remove(self.user)
+   //             self.friendList = Array(stateMessage.users)
+                // 重刷好友清單
+   //             self.tableView.reloadData()
+            }
+          
+        }
+
+        socket.onData = { (data: Data) in
+            print("\(self.tag) got some data: \(data.count)")
+        }
     }
     
     func showAllChef(){
