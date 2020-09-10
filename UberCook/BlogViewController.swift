@@ -9,64 +9,38 @@ import UIKit
 
 class BlogViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
-    
     @IBOutlet weak var collectionView: UICollectionView!
     let url_server = URL(string: common_url + "UberCook_Servlet")
     var chefLeader: ChefLeader?
     var blogList = [Blog]()
-    var line:Int = 0
-    //    let chefImageView = UIImageView()
-    //    let postLabel = UILabel()
-    //    let postNumberLabel = UILabel()
-    //    let followingLabel = UILabel()
-    //    let followingNumberLabel = UILabel()
-    //    let chefSiLabel = UILabel()
-    
-    
-    
+    let fileManager = FileManager()
+//    var line:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getBlog()
         title = chefLeader?.user_name
-        //        chefSiLabel.text = chefLeader?.user_si
-        
-        //        chefSiLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        //        chefSiLabel.frame = CGRect(x: 10, y: 120, width: 200, height: 100)
-        //        chefSiLabel.numberOfLines = 0
-        //        chefSiLabel.sizeToFit()
-        //
-        //
-        //        followingNumberLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        //        followingNumberLabel.frame = CGRect(x: 310, y: 49, width: 32, height: 21)
-        //
-        //
-        //        postNumberLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        //        postNumberLabel.frame = CGRect(x: 200, y: 49, width: 27, height: 21)
-        //
-        //
-        //        followingLabel.text = "追蹤人數"
-        //        followingLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        //        followingLabel.frame = CGRect(x: 288, y: 69, width: 63, height: 18)
-        //        followingLabel.sizeToFit()
-        //
-        //        postLabel.text = "貼文"
-        //        postLabel.frame = CGRect(x: 190, y: 69, width: 37, height: 18)
-        //        postLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        //        postLabel.sizeToFit()
-        //
-        //        chefImageView.contentMode = .scaleAspectFit
-        //        chefImageView.frame = CGRect(x: 15, y: 15, width: 90, height: 90)
-        //        chefImageView.clipsToBounds = true
-        //        chefImageView.layer.cornerRadius = 45
-        
-        //        collectionView.addSubview(chefImageView)
-        //        collectionView.addSubview(postLabel)
-        //        collectionView.addSubview(followingLabel)
-        //        collectionView.addSubview(postNumberLabel)
-        //        collectionView.addSubview(followingNumberLabel)
-        //        collectionView.addSubview(chefSiLabel)
+    }
+    
+    func getBlog(){
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getBlog"
+        requestParam["chef_no_blog"] = chefLeader?.chef_no
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            let decoder = JSONDecoder()
+            if error == nil {
+                if data != nil {
+//                print("input: \(String(data: data!, encoding: .utf8)!)")
+                    if let result = try? decoder.decode([Blog].self, from: data!){
+                        self.blogList = result
+                        print(self.blogList.count)
+                        DispatchQueue.main.async {
+                            self.collectionView.reloadData()
+                        }
+                    }
+                }
+            }
+        }
     }
     
     
@@ -84,21 +58,37 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
         requestParam["recipe_no"] = bolg.recipe_no
         requestParam["imageSize"] = cell.frame.width
         var image: UIImage?
+        let imageUrl = fileInCaches(fileName: bolg.recipe_no!)
+        if self.fileManager.fileExists(atPath: imageUrl.path) {
+            if let imageCaches = try? Data(contentsOf: imageUrl) {
+                image = UIImage(data: imageCaches)
+                DispatchQueue.main.async {
+                    cell.BlogImageView.image = image
+                }
+            }
+        }else{
         executeTask(url_server!, requestParam) { (data, response, error) in
             //            print("input: \(String(data: data!, encoding: .utf8)!)")
             if error == nil {
                 if data != nil {
                     image = UIImage(data: data!)
+                    DispatchQueue.main.async {
+                        cell.BlogImageView.image = image
+                    }
+                    if let image = image?.jpegData(compressionQuality: 1.0) {
+                        try? image.write(to: imageUrl, options: .atomic)
+                    }
                 }
                 if image == nil {
                     image = UIImage(named: "noImage.jpg")
-                }
-                DispatchQueue.main.async {
-                    cell.BlogImageView.image = image
+                    DispatchQueue.main.async {
+                        cell.BlogImageView.image = image
+                    }
                 }
             } else {
                 print(error!.localizedDescription)
             }
+        }
         }
         return cell
     }
@@ -108,12 +98,12 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let reusableView = collectionView.dequeueReusableSupplementaryView(
             ofKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: "header", for: indexPath) as! BlogHeardReusableView
-        let blog = blogList[indexPath.row]
+//        let blog = blogList[indexPath.row]
         reusableView.chefImageView.layer.cornerRadius = reusableView.chefImageView.frame.height / 2
         reusableView.chefSi.text = chefLeader?.user_si
         reusableView.chefName.text = chefLeader?.user_name
         reusableView.postLabel.text = String(blogList.count)
-        reusableView.followLabel.text = String(blog.recipe_total ?? 0)
+        reusableView.followLabel.text = String(blogList[indexPath.row].recipe_total ?? 0)
 //        print(reusableView.chefSi.text ?? "??")
 //        let lines = reusableView.chefSi.value(forKey: "measuredNumberOfLines")
 //        print("line_1 : \(lines ?? "error")")
@@ -124,6 +114,15 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
         requestParam["user_no"] = chefLeader?.user_no
         requestParam["imageSize"] = 240
         var image: UIImage?
+        let imageUrl = fileInCaches(fileName: chefLeader?.user_no ?? "")
+        if self.fileManager.fileExists(atPath: imageUrl.path) {
+            if let imageCaches = try? Data(contentsOf: imageUrl) {
+                image = UIImage(data: imageCaches)
+                DispatchQueue.main.async {
+                    reusableView.chefImageView.image = image
+                }
+            }
+        }else{
         executeTask(url_server!, requestParam) { (data, response, error) in
             //            print("input: \(String(data: data!, encoding: .utf8)!)")
             if error == nil {
@@ -140,6 +139,7 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 print(error!.localizedDescription)
             }
         }
+        }
         return reusableView
     }
     
@@ -150,36 +150,19 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.navigationController?.pushViewController(chefBlog, animated: true)
     }
     
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellsAcross: CGFloat = 3
-        let spaceBetweenCells: CGFloat = 5
-        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
-        return CGSize(width: dim, height: dim)
-    }
-//    collectionView.frame.size.width??
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        let heightForHeard = line*20
-//        if heightForHeard == 0 {
-//            return CGSize(width: 414, height: 100)
-//        }else{
-//            print(heightForHeard)
-//            return CGSize(width: 414, height: heightForHeard)
-//        }
-//    }
-    
-    
-    func getBlog(){
+    @IBAction func clickTrack(_ sender: Any) {
         var requestParam = [String: Any]()
-        requestParam["action"] = "getBlog"
-        requestParam["chef_no_blog"] = chefLeader?.chef_no
+        requestParam["action"] = "insertFollow"
+        requestParam["user_no"] = chefLeader?.chef_no
+        requestParam["chef_no"] = chefLeader?.chef_no
         executeTask(url_server!, requestParam) { (data, response, error) in
             let decoder = JSONDecoder()
             if error == nil {
                 if data != nil {
-                    //                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = try? decoder.decode([Blog].self, from: data!){
                         self.blogList = result
+                        print(self.blogList.count)
                         DispatchQueue.main.async {
                             self.collectionView.reloadData()
                         }
@@ -191,7 +174,24 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let cellsAcross: CGFloat = 3
+//        let spaceBetweenCells: CGFloat = 5
+//        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
+//        return CGSize(width: dim, height: dim)
+//    }
+//    collectionView.frame.size.width??
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        let heightForHeard = line*20
+//        if heightForHeard == 0 {
+//            return CGSize(width: 414, height: 100)
+//        }else{
+//            print(heightForHeard)
+//            return CGSize(width: 414, height: heightForHeard)
+//        }
+//    }
     
+ 
     /*
      // MARK: - Navigation
      

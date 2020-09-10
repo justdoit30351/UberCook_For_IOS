@@ -2,6 +2,7 @@ class User: Codable {
     var account = ""
     var password = ""
     var user_name = ""
+    var user_no:String?
     
     init(_ account: String, _ password: String) {
         self.account = account

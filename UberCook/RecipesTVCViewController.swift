@@ -12,6 +12,7 @@ class RecipesTVCViewController: UIViewController, UITableViewDelegate, UITableVi
     var blog: Blog?
     var recipeList = [RecipeList]()
     var reciepLeaderList = [Recipe]()
+    let fileManager = FileManager()
 
 
     override func viewDidLoad() {
@@ -89,22 +90,38 @@ class RecipesTVCViewController: UIViewController, UITableViewDelegate, UITableVi
         requestParam["recipe_no"] = recipes.recipe_no
         requestParam["imageSize"] = cell.frame.width
         var image: UIImage?
-        executeTask(url_server!, requestParam) { (data, response, error) in
-//            print("input: \(String(data: data!, encoding: .utf8)!)")
-            if error == nil {
-                if data != nil {
-                    image = UIImage(data: data!)
-                }
-                if image == nil {
-                    image = UIImage(named: "noImage.jpg")
-                }
+        let imageUrl = fileInCaches(fileName: recipes.recipe_no!)
+        if self.fileManager.fileExists(atPath: imageUrl.path) {
+            if let imageCaches = try? Data(contentsOf: imageUrl) {
+                image = UIImage(data: imageCaches)
                 DispatchQueue.main.async {
                     cell.recipeImageView.image = image
                 }
-            } else {
-                print(error!.localizedDescription)
             }
-    }
+        }else{
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                //            print("input: \(String(data: data!, encoding: .utf8)!)")
+                if error == nil {
+                    if data != nil {
+                        image = UIImage(data: data!)
+                        DispatchQueue.main.async {
+                            cell.recipeImageView.image = image
+                        }
+                        if let image = image?.jpegData(compressionQuality: 1.0) {
+                            try? image.write(to: imageUrl, options: .atomic)
+                        }
+                    }
+                    if image == nil {
+                        image = UIImage(named: "noImage.jpg")
+                        DispatchQueue.main.async {
+                            cell.recipeImageView.image = image
+                        }
+                    }
+                } else {
+                    print(error!.localizedDescription)
+                }
+            }
+        }
         
         var requestParam_2 = [String: Any]()
         requestParam_2["action"] = "getUserImageForRecipeDetail"
