@@ -17,10 +17,10 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var chefIconImageView: UIImageView!
     @IBOutlet weak var recipeImageview: UIImageView!
     @IBOutlet weak var chefNameLabel: UILabel!
-//    var user_name:[User]?
-//    var userName:String
+    @IBOutlet weak var favoriteButton: UIButton!
+    let userDefault = UserDefaults()
     var recipe:Recipe?
-    var user_name:User_name?
+    var flag = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,32 @@ class RecipeDetailViewController: UIViewController {
         showChefIcon()
         showRecipeImage()
         showChefName()
+        searchTrack()
+    }
+    
+    func searchTrack(){
+        var requestParam = [String: Any]()
+        requestParam["action"] = "searchTrack"
+        requestParam["user_no"] = self.userDefault.value(forKey: "user_no")
+        requestParam["chef_no"] = recipe?.chef_no
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    self.flag = Int(String(decoding: data!, as: UTF8.self)) ?? 0
+                    if self.flag == 0{
+                        DispatchQueue.main.async {
+                        self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                        self.favoriteButton.tintColor = .black
+                        }
+                    }else{
+                        DispatchQueue.main.async {
+                        self.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                        self.favoriteButton.tintColor = .red
+                        }
+                    }
+                }
+            }
+        }
     }
     
     
@@ -113,14 +139,6 @@ class RecipeDetailViewController: UIViewController {
     }
     
     func showChefName(){
-//        let dataUrl = fileInCaches(fileName: recipe?.chef_no ?? "")
-//        if fileManager.fileExists(atPath: dataUrl.path) {
-//            if let name = NSDictionary(contentsOf: dataUrl) as? [String: String] {
-//                if let user_name = name["name"] {
-//                    chefNameLabel.text = user_name
-//                }
-//            }
-        
         var requestParam = [String: Any]()
         requestParam["action"] = "getUserNameforRecipeDetail"
         requestParam["chef_no"] = recipe?.chef_no
@@ -128,7 +146,6 @@ class RecipeDetailViewController: UIViewController {
             if error == nil {
                 if data != nil {
                     print("input: \(String(data: data!, encoding: .utf8)!)")
-//                    if let result = try? JSONDecoder().decode([User_name].self, from: data!){
                         DispatchQueue.main.async {
                             self.chefNameLabel.text = "\(String(decoding: data!, as: UTF8.self))"
                         }
@@ -136,4 +153,54 @@ class RecipeDetailViewController: UIViewController {
                 }
             }
         }
+    
+    
+    @IBAction func clickTrack(_ sender: Any) {
+        if flag == 0 {
+            self.flag = 1
+            var requestParam = [String: Any]()
+            requestParam["action"] = "insertFollow"
+            requestParam["user_no"] = self.userDefault.value(forKey: "user_no")
+            requestParam["chef_no"] = recipe?.chef_no
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        let count = String(decoding: data!, as: UTF8.self)
+                        if count == "1"{
+                            DispatchQueue.main.async {
+                                self.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                                self.favoriteButton.tintColor = .red
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }else{
+            self.flag = 0
+            var requestParam = [String: Any]()
+            requestParam["action"] = "deleteFollow"
+            requestParam["user_no"] = self.userDefault.value(forKey: "user_no")
+            requestParam["chef_no"] = recipe?.chef_no
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        let count = String(decoding: data!, as: UTF8.self)
+                        if count == "1"{
+                            DispatchQueue.main.async {
+                                self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                                self.favoriteButton.tintColor = .black
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
 }

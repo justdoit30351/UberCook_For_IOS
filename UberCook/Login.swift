@@ -46,7 +46,7 @@ class Login: UIViewController {
                     let decoder = JSONDecoder()
                     if let result = try? decoder.decode(LoginObj.self, from: data!) {
                         if result.Result == "successful" {
-                            print(result)
+//                            print(result)
                             if(result.USER!.flag == 2){
                                 self.userDefault.setValue(result.CHEF_NO!,forKey: "chef_no")
                             }
@@ -61,13 +61,18 @@ class Login: UIViewController {
                             self.userDefault.setValue(result.USER!.user_si,forKey: "user_si")
                             self.userDefault.setValue(result.USER!.user_bank_account,forKey: "user_bank_account")
                             
+//                            let domain = Bundle.main.bundleIdentifier!
+//                            UserDefaults.standard.removePersistentDomain(forName: domain)
+//                            UserDefaults.standard.synchronize()
+                            
+//                            print("USER : \(self.userDefault.dictionaryRepresentation())")
                             DispatchQueue.main.sync {
                                 self.performSegue(withIdentifier: "Home", sender: self)
                             }
                             
                         }else{
-                            print("Login Fail")
-                            print(result.msg!)
+//                            print("Login Fail")
+//                            print(result.msg!)
                         }
                     }
                 }
@@ -86,3 +91,18 @@ class Login: UIViewController {
      */
     
 }
+
+//
+//extension UserDefaults{
+//    enum Keys: String, CaseIterable {
+//
+//           case unitsNotation
+//           case temperatureNotation
+//           case allowDownloadsOverCellular
+//
+//       }
+//
+//       func reset() {
+//           Keys.allCases.forEach { removeObject(forKey: $0.rawValue) }
+//       }
+//}

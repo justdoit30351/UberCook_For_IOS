@@ -497,11 +497,11 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qg6-If-oNn">
                                                     <rect key="frame" x="276" y="0.0" width="128" height="30"/>
-                                                    <state key="normal" title="追蹤" backgroundImage="LoginButton">
+                                                    <state key="normal" backgroundImage="LoginButton">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="clickTrack:" destination="kA5-Z2-9rn" eventType="touchUpInside" id="H56-JY-zeg"/>
+                                                        <action selector="clickTrack:" destination="kA5-Z2-9rn" eventType="touchUpInside" id="tbL-jb-dQF"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -531,7 +531,7 @@
                                         <outlet property="followLabel" destination="jsk-x4-CFz" id="gTh-f4-HG4"/>
                                         <outlet property="postLabel" destination="9JY-3n-tyY" id="ggN-Zc-Rva"/>
                                         <outlet property="reserveButton" destination="YHA-aZ-hYw" id="Xke-2F-HWl"/>
-                                        <outlet property="trackButton" destination="Qg6-If-oNn" id="IUS-Jw-SDu"/>
+                                        <outlet property="trackButton" destination="Qg6-If-oNn" id="pTa-td-jHV"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>
@@ -614,6 +614,9 @@
                                                         <state key="normal" image="heart" catalog="system">
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="clickTrack:" destination="iTs-lx-y5s" eventType="touchUpInside" id="NOW-Eg-7Yh"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3GG-2O-EPW">
                                                         <rect key="frame" x="35" y="0.0" width="25" height="30"/>
@@ -706,6 +709,7 @@
                     <connections>
                         <outlet property="chefIconImageView" destination="It2-dZ-Pom" id="GNF-8z-CPS"/>
                         <outlet property="chefNameLabel" destination="TC9-TL-4x0" id="XxM-2F-nvd"/>
+                        <outlet property="favoriteButton" destination="eSR-wh-5DS" id="UK3-qH-Nng"/>
                         <outlet property="recipeConLabel" destination="Y6u-fi-gNN" id="ghO-68-ZNJ"/>
                         <outlet property="recipeImageview" destination="CKz-r9-NdO" id="dpg-cl-nFz"/>
                         <outlet property="recipePointLabel" destination="UHT-Kg-Kfe" id="AKG-m4-T7O"/>

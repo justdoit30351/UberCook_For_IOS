@@ -163,10 +163,6 @@ class Home: UIViewController, UICollectionViewDelegate, UICollectionViewDataSour
         switch collectionView.tag {
         case 0:
             let chefLeader = chefLeaderList[indexPath.row]
-            let dataUrl = fileInCaches(fileName: chefLeader.chef_no!)
-            var name = [String: String]()
-            name["name"] = chefLeader.user_name
-            NSDictionary(dictionary: name).write(to: dataUrl, atomically: true)
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCollectionViewCell
             cell.layer.cornerRadius = cell.frame.height/20
             var requestParam = [String: Any]()
