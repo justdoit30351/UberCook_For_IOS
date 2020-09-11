@@ -93,9 +93,6 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
-        
-
         let bolg = blogList[indexPath.row]
         //        postNumberLabel.text = String(blogList.count)
         //        followingNumberLabel.text = String(bolg.recipe_total ?? 0)
@@ -264,6 +261,19 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
 //        return CGSize(width: dim, height: dim)
 //    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        // Get the view for the first header
+        let indexPath = IndexPath(row: 0, section: section)
+        let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
+        
+        // Use this view to calculate the optimal size based on the collection view's width
+        return headerView.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width, height: UIView.layoutFittingExpandedSize.height),
+            withHorizontalFittingPriority: .required, // Width is fixed
+            verticalFittingPriority: .fittingSizeLevel) // Height can be as large as needed
+    }
+    
 //    collectionView.frame.size.width??
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
 //        let heightForHeard = line*20

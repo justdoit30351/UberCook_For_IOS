@@ -11,6 +11,8 @@
 		E5149528250A037600A7290D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5149526250A037600A7290D /* ChatMessage.swift */; };
 		E5149529250A037600A7290D /* StateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5149527250A037600A7290D /* StateMessage.swift */; };
 		E514952B250A1B1E00A7290D /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514952A250A1B1E00A7290D /* Track.swift */; };
+		E514952D250B499F00A7290D /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514952C250B499E00A7290D /* FavoriteTableViewCell.swift */; };
+		E514952F250B4A1800A7290D /* FavoriteTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514952E250B4A1800A7290D /* FavoriteTVC.swift */; };
 		E529F70225037E610079A593 /* Caches.swift in Sources */ = {isa = PBXBuildFile; fileRef = E529F70125037E610079A593 /* Caches.swift */; };
 		E55F195724FD78E0005C5DBC /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F195624FD78E0005C5DBC /* RecipeDetailViewController.swift */; };
 		E589F8E225094E4D00169A6D /* User_name.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589F8E125094E4D00169A6D /* User_name.swift */; };
@@ -42,6 +44,8 @@
 		E5149526250A037600A7290D /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		E5149527250A037600A7290D /* StateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMessage.swift; sourceTree = "<group>"; };
 		E514952A250A1B1E00A7290D /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		E514952C250B499E00A7290D /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		E514952E250B4A1800A7290D /* FavoriteTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTVC.swift; sourceTree = "<group>"; };
 		E529F70125037E610079A593 /* Caches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caches.swift; sourceTree = "<group>"; };
 		E55F195624FD78E0005C5DBC /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		E589F8E125094E4D00169A6D /* User_name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_name.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 				E5925C3425001617002D5C4D /* RecipeListCell.swift */,
 				E592950B24FBA1B500C8F9A2 /* HomeCollectionViewCell.swift */,
 				E5925C3024FFF2DE002D5C4D /* BlogHeardReusableView.swift */,
+				E514952C250B499E00A7290D /* FavoriteTableViewCell.swift */,
 				E5925C2C24FF9E5D002D5C4D /* BlogCollectionViewCell.swift */,
 			);
 			path = Cell;
@@ -169,6 +174,7 @@
 				E59294ED24FA8E7B00C8F9A2 /* SceneDelegate.swift */,
 				E5925C2A24FF9708002D5C4D /* BlogViewController.swift */,
 				E592950524FABD7700C8F9A2 /* Home.swift */,
+				E514952E250B4A1800A7290D /* FavoriteTVC.swift */,
 				E5AF25C1250A01DA00FBAD9F /* Login.swift */,
 				E5925C382500292A002D5C4D /* RecipesTVCViewController.swift */,
 				E55F195624FD78E0005C5DBC /* RecipeDetailViewController.swift */,
@@ -295,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5AF25C2250A01DA00FBAD9F /* Login.swift in Sources */,
+				E514952F250B4A1800A7290D /* FavoriteTVC.swift in Sources */,
 				E514952B250A1B1E00A7290D /* Track.swift in Sources */,
 				E5925C392500292A002D5C4D /* RecipesTVCViewController.swift in Sources */,
 				E592950024FAA37700C8F9A2 /* Common.swift in Sources */,
@@ -307,6 +314,7 @@
 				E59294EC24FA8E7B00C8F9A2 /* AppDelegate.swift in Sources */,
 				E592950624FABD7700C8F9A2 /* Home.swift in Sources */,
 				E5149529250A037600A7290D /* StateMessage.swift in Sources */,
+				E514952D250B499F00A7290D /* FavoriteTableViewCell.swift in Sources */,
 				E592950824FADED000C8F9A2 /* ChefLeader.swift in Sources */,
 				E5925C2F24FFA0B9002D5C4D /* Blog.swift in Sources */,
 				E5149528250A037600A7290D /* ChatMessage.swift in Sources */,
