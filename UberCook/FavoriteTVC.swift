@@ -11,36 +11,11 @@ class FavoriteTVC: UIViewController{
 
     @IBOutlet weak var trackSC: UIScrollView!
     @IBOutlet weak var trackSG: UISegmentedControl!
-//    let userDefault = UserDefaults()
-//    let url_server = URL(string: common_url + "UberCook_Servlet")
-//    var track = [Track]()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        getTrack()
     }
     
-//    func getTrack(){
-//        let user_no = userDefault.value(forKey: "user_no")
-//        var requestParam = [String: Any]()
-//        requestParam["action"] = "getFollow"
-//        requestParam["user_no"] = user_no
-//        executeTask(url_server!, requestParam) { (data, response, error) in
-//            let decoder = JSONDecoder()
-//            if error == nil {
-//                if data != nil {
-//                    //print("input: \(String(data: data!, encoding: .utf8)!)")
-//                    if let result = try? decoder.decode([Track].self, from: data!){
-//                        self.track = result
-////                        DispatchQueue.main.async {
-////
-////                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
     
     @IBAction func clickSegment(_ sender: UISegmentedControl) {
         let x = CGFloat(sender.selectedSegmentIndex) * trackSC.bounds.width
@@ -57,7 +32,6 @@ class FavoriteTVC: UIViewController{
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension FavoriteTVC: UIScrollViewDelegate {

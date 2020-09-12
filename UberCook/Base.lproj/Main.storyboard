@@ -68,14 +68,23 @@
                                     <constraint firstAttribute="width" constant="350" id="TA6-We-OPh"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d16-P6-hK3">
+                                <rect key="frame" x="10" y="54" width="148" height="30"/>
+                                <state key="normal" title="This is a magicButton"/>
+                                <connections>
+                                    <action selector="magicButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yDM-tK-QgS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qhQ-kQ-AiI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="7ia-sF-yfP"/>
+                            <constraint firstItem="d16-P6-hK3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="RBS-oJ-Jgq"/>
                             <constraint firstItem="u3d-Gw-DGN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W0T-sY-eOq"/>
                             <constraint firstItem="qhQ-kQ-AiI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gaj-gp-Fr6"/>
                             <constraint firstItem="u3d-Gw-DGN" firstAttribute="top" secondItem="qhQ-kQ-AiI" secondAttribute="bottom" constant="80" id="kRN-Qp-rto"/>
+                            <constraint firstItem="d16-P6-hK3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="vc0-Zq-AAi"/>
                         </constraints>
                         <connections>
                             <action selector="textFieldresignFirstRespondertouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="AiO-82-yQF"/>
@@ -743,7 +752,7 @@
                                                 <constraint firstAttribute="width" constant="70" id="v8O-2j-IjG"/>
                                             </constraints>
                                         </imageView>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8t-zP-5E6">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8t-zP-5E6">
                                             <rect key="frame" x="315" y="30" width="51" height="31"/>
                                             <connections>
                                                 <action selector="clickToTrack:" destination="GUP-Yc-KIi" eventType="valueChanged" id="E0X-g4-Gd7"/>
@@ -818,11 +827,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyV-Xo-leh">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyV-Xo-leh">
                                             <rect key="frame" x="315" y="30" width="51" height="31"/>
-                                            <connections>
-                                                <action selector="clickToCollection:" destination="7Xg-o7-oXt" eventType="valueChanged" id="aHA-Bx-Mw9"/>
-                                            </connections>
                                         </switch>
                                     </subviews>
                                     <constraints>
