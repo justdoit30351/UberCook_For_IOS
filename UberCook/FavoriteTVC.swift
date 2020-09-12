@@ -7,52 +7,47 @@
 
 import UIKit
 
-class FavoriteTVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FavoriteTVC: UIViewController{
 
-    let userDefault = UserDefaults()
-    let url_server = URL(string: common_url + "UberCook_Servlet")
-    var track = [Track]()
+    @IBOutlet weak var trackSC: UIScrollView!
+    @IBOutlet weak var trackSG: UISegmentedControl!
+//    let userDefault = UserDefaults()
+//    let url_server = URL(string: common_url + "UberCook_Servlet")
+//    var track = [Track]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getTrack()
+//        getTrack()
     }
     
-    func getTrack(){
-        let user_no = userDefault.value(forKey: "user_no")
-        var requestParam = [String: Any]()
-        requestParam["action"] = "getFollow"
-        requestParam["user_no"] = user_no
-        executeTask(url_server!, requestParam) { (data, response, error) in
-            let decoder = JSONDecoder()
-            if error == nil {
-                if data != nil {
-                    //print("input: \(String(data: data!, encoding: .utf8)!)")
-                    if let result = try? decoder.decode([Track].self, from: data!){
-                        self.track = result
-//                        DispatchQueue.main.async {
-//
-//                        }
-                    }
-                }
-            }
-        }
+//    func getTrack(){
+//        let user_no = userDefault.value(forKey: "user_no")
+//        var requestParam = [String: Any]()
+//        requestParam["action"] = "getFollow"
+//        requestParam["user_no"] = user_no
+//        executeTask(url_server!, requestParam) { (data, response, error) in
+//            let decoder = JSONDecoder()
+//            if error == nil {
+//                if data != nil {
+//                    //print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    if let result = try? decoder.decode([Track].self, from: data!){
+//                        self.track = result
+////                        DispatchQueue.main.async {
+////
+////                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+    @IBAction func clickSegment(_ sender: UISegmentedControl) {
+        let x = CGFloat(sender.selectedSegmentIndex) * trackSC.bounds.width
+               let offset = CGPoint(x: x, y: 0)
+        trackSC.setContentOffset(offset, animated: true)
     }
     
-    
-
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return track.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteTableViewCell", for: indexPath) as! FavoriteTableViewCell
-        let trackList = track[indexPath.row]
-//        cell.trackTitleLabel.text =
-        return cell
-    }
     /*
     // MARK: - Navigation
 
@@ -63,4 +58,11 @@ class FavoriteTVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     }
     */
 
+}
+
+extension FavoriteTVC: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let index = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        trackSG.selectedSegmentIndex = index
+    }
 }

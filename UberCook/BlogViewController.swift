@@ -23,20 +23,21 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let fileManager = FileManager()
     let userDefault = UserDefaults()
     var flag = 0
+    var track:Track?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getBlog()
         getTrack()
         searchTrack()
-        title = chefLeader?.user_name
+        title = chefLeader?.user_name ?? track?.user_name
     }
     
     
     func getTrack(){
         var requestParam = [String: Any]()
         requestParam["action"] = "getFollows"
-        requestParam["chef_no"] = chefLeader?.chef_no
+        requestParam["chef_no"] = chefLeader?.chef_no ?? track?.chef_no
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -52,7 +53,7 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func getBlog(){
         var requestParam = [String: Any]()
         requestParam["action"] = "getBlog"
-        requestParam["chef_no_blog"] = chefLeader?.chef_no
+        requestParam["chef_no_blog"] = chefLeader?.chef_no ?? track?.chef_no
         executeTask(url_server!, requestParam) { (data, response, error) in
             let decoder = JSONDecoder()
             if error == nil {
@@ -73,7 +74,7 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
         var requestParam = [String: Any]()
         requestParam["action"] = "searchTrack"
         requestParam["user_no"] = self.userDefault.value(forKey: "user_no")
-        requestParam["chef_no"] = chefLeader?.chef_no
+        requestParam["chef_no"] = chefLeader?.chef_no ?? track?.chef_no
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -142,8 +143,8 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ofKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: "header", for: indexPath) as? BlogHeardReusableView
         reusableView?.chefImageView.layer.cornerRadius = (reusableView?.chefImageView.frame.height)! / 2
-        reusableView?.chefSi.text = chefLeader?.user_si
-        reusableView?.chefName.text = chefLeader?.user_name
+        reusableView?.chefSi.text = chefLeader?.user_si ?? track?.user_si
+        reusableView?.chefName.text = chefLeader?.user_name ?? track?.user_name
         reusableView?.postLabel.text = String(blogList.count)
         reusableView?.followLabel.text = String(self.trackNum)
         test = indexPath
@@ -164,10 +165,10 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         var requestParam = [String: Any]()
         requestParam["action"] = "getUserImage"
-        requestParam["user_no"] = chefLeader?.user_no
+        requestParam["user_no"] = chefLeader?.user_no ?? track?.user_no
         requestParam["imageSize"] = 240
         var image: UIImage?
-        let imageUrl = fileInCaches(fileName: chefLeader?.user_no ?? "")
+        let imageUrl = fileInCaches(fileName: (chefLeader?.user_no ?? track?.user_no) ?? "")
         if self.fileManager.fileExists(atPath: imageUrl.path) {
             if let imageCaches = try? Data(contentsOf: imageUrl) {
                 image = UIImage(data: imageCaches)
@@ -213,7 +214,7 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
             var requestParam = [String: Any]()
             requestParam["action"] = "insertFollow"
             requestParam["user_no"] = self.userDefault.value(forKey: "user_no")
-            requestParam["chef_no"] = chefLeader?.chef_no
+            requestParam["chef_no"] = chefLeader?.chef_no ?? track?.chef_no
             executeTask(url_server!, requestParam) { (data, response, error) in
                 if error == nil {
                     if data != nil {
@@ -234,7 +235,7 @@ class BlogViewController: UIViewController, UICollectionViewDelegate, UICollecti
             var requestParam = [String: Any]()
             requestParam["action"] = "deleteFollow"
             requestParam["user_no"] = self.userDefault.value(forKey: "user_no")
-            requestParam["chef_no"] = chefLeader?.chef_no
+            requestParam["chef_no"] = chefLeader?.chef_no ?? track?.chef_no
             executeTask(url_server!, requestParam) { (data, response, error) in
                 if error == nil {
                     if data != nil {
